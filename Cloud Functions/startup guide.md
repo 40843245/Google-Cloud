@@ -4,6 +4,8 @@ To create a cloud function in a GCP (Google Cloud Project)
 
 you have to create a service in Cloud Run.
 
+### Part 1 -- create a service in Cloud Run page.
+
 Step 1:
 
 First, go to Google Cloud Console, then select the GCP you want to write.
@@ -126,8 +128,69 @@ you need to select service account that this service will use, in the `Service a
 
 <img width="660" height="404" alt="image" src="https://github.com/user-attachments/assets/c28a6188-bc20-48f2-9aa8-af7c67a0b9cd" />
 
-4. The last thing you need to pay attention to is to fill a descriptive name as the service name.
+4. The fourth thing you need to pay attention to is to fill a descriptive name as the service name.
 
-5. Then you can click `Create` button to create the service.
+<img width="323" height="138" alt="image" src="https://github.com/user-attachments/assets/0ff9d6f5-4261-4d35-848c-919f53d77386" />
 
-<img width="1904" height="1034" alt="image" src="https://github.com/user-attachments/assets/66aad1a9-689d-49ce-880e-70c044f17c19" />
+5. The fifth thing you need to pay attention to is to set a region.
+
+The service will be used by the compute engine located at the specified region.
+
+> [!IMPORTANT]
+> The region you specified relates to the tier level which relates to billing account.
+>
+> Please watch out it and pay attention to `Pricing summary` to save your cost.
+>
+> Also, I recommend to select region with tier 1 for beginner,
+>
+> since tier 1 is free (if you don't consume up more than the available free qutoa) and
+>
+> usually fits for personnal use (such as just practicing CI/CD) within its free quota. 
+
+<img width="323" height="138" alt="image" src="https://github.com/user-attachments/assets/0ff9d6f5-4261-4d35-848c-919f53d77386" />
+
+6. The sixth thing you need to pay attention to is to the billing method.
+
+I highly recommended you to select `Request-based`.
+
+If `Request-based` is selected, 
+
+then, iff when processing requests, the quota is consumed and it is charged since CPU is limited outside of requests.
+
+Otherwise, the CPU is always consumed and thus the free quota is always consume and consequently you might receive a billing account that spends lots of cash.
+
+<img width="262" height="59" alt="image" src="https://github.com/user-attachments/assets/a04edc9d-c12b-4590-af02-19bd4f41c54f" />
+
+
+7. The seventh thing you need to pay attention to is to set the execution environment.
+
+I highly recommend to execute it with the newest generation (now it is, Second generation) for better compatibility and faster performance.
+
+> [!IMPORTANT]
+> It auto-fills `Default` radio button by default, please select different radio if needed.
+
+<img width="309" height="99" alt="image" src="https://github.com/user-attachments/assets/2985c8b2-2dcd-4c5d-86f8-c1ba5f096607" />
+
+8. The seventh thing you need to pay attention to is to set the request timeout and maximam available concurrent requests. 
+
+> [!IMPORTANT]
+> The `Requests timeout` field takes one second as unit.
+
+<img width="644" height="176" alt="image" src="https://github.com/user-attachments/assets/ab3b7139-708a-4284-a94e-6e29e7a430ef" />
+
+9. Lastly you can click `Create` button (at the bottom of the panel) to create the service.
+
+<img width="133" height="86" alt="image" src="https://github.com/user-attachments/assets/95d2e2b6-ccae-4629-b02b-b6d7db87bc18" />
+
+### Part 2 -- Writing a function
+#### Case 1: deploy on repo with git
+If you deploy on repo with git, and the build type is set to `Dockerfile` (see 2th point you need to pay attention to), 
+
+<img width="307" height="283" alt="image" src="https://github.com/user-attachments/assets/0dec583d-a5da-4d19-b2de-4771d880bb65" />
+
+then you have to write your logic into the file then push it.
+
+> [!IMPORTANT]
+> The file path of the file you pushed MUST correspond to the location specified in `Source location` field
+>
+> since it will use this file when the event is triggered. 
