@@ -105,31 +105,6 @@ After that please click `Save` button (blue button with white text)
 
 <img width="612" height="570" alt="image" src="https://github.com/user-attachments/assets/d8b9d94c-d186-47a0-8b33-7dfa0bcd0f12" />
 
-Additionally you need to pay attention to configure the containers settings, networking settings, security settings.
-
-About container settings, please specify the container port number and remember it.
-
-It will be used when you write `Dockerfile`.
-
-Then edit your container name
-
-> [!IMPORTANT]
-> After saving the edit, it will schedule that the container will be created after finishing creating the service rather than immediately create a container.
->
-> Thus, the `container name` displayed on the page will be NOT be re-render.
-  
-<img width="654" height="653" alt="image" src="https://github.com/user-attachments/assets/86c5bc9d-40ef-408d-827e-88e0be11f07c" />
-
-About networking settings,
-
-<img width="329" height="183" alt="image" src="https://github.com/user-attachments/assets/cb7df017-5bcd-4e08-b6bc-758fa630cc29" />
-
-About security settings,
-
-you need to select service account that this service will use, in the `Service account` dropdown list.
-
-<img width="660" height="404" alt="image" src="https://github.com/user-attachments/assets/c28a6188-bc20-48f2-9aa8-af7c67a0b9cd" />
-
 Case 2: If you specify `Use an inline editor to create a function` radio button
 
 <img width="107" height="76" alt="image" src="https://github.com/user-attachments/assets/939c56ff-6e90-43da-9199-60a2cb345366" />
@@ -214,7 +189,32 @@ I highly recommend to execute it with the newest generation (now it is, Second g
 
 <img width="644" height="176" alt="image" src="https://github.com/user-attachments/assets/ab3b7139-708a-4284-a94e-6e29e7a430ef" />
 
-8. Lastly you can click `Create` button (at the bottom of the panel) to create the service.
+8. The eighth thing you need to do is to configure the containers settings, networking settings, security settings
+
+About container settings, please specify the container port number and remember it.
+
+It will be used when you write `Dockerfile`.
+
+Then edit your container name
+
+> [!IMPORTANT]
+> After saving the edit, it will schedule that the container will be created after finishing creating the service rather than immediately create a container.
+>
+> Thus, the `container name` displayed on the page will be NOT be re-render.
+  
+<img width="654" height="653" alt="image" src="https://github.com/user-attachments/assets/86c5bc9d-40ef-408d-827e-88e0be11f07c" />
+
+About networking settings,
+
+<img width="329" height="183" alt="image" src="https://github.com/user-attachments/assets/cb7df017-5bcd-4e08-b6bc-758fa630cc29" />
+
+About security settings,
+
+you need to select service account that this service will use, in the `Service account` dropdown list.
+
+<img width="660" height="404" alt="image" src="https://github.com/user-attachments/assets/c28a6188-bc20-48f2-9aa8-af7c67a0b9cd" />
+
+9. Lastly you can click `Create` button (at the bottom of the panel) to create the service.
 
 <img width="133" height="86" alt="image" src="https://github.com/user-attachments/assets/95d2e2b6-ccae-4629-b02b-b6d7db87bc18" />
 
