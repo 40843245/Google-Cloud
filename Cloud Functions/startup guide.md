@@ -47,15 +47,17 @@ I will discuss them.
 
 <img width="1904" height="1034" alt="image" src="https://github.com/user-attachments/assets/66aad1a9-689d-49ce-880e-70c044f17c19" />
 
-1. 
-
-The first you thing you need to pay attention to is to determine how to create a Cloud Function.
+1. The first you thing you need to pay attention to is to determine how to create a Cloud Function.
 
 + If you use existing container image, please select `Deploy one revision from an existing container image`.
 + If you perform Git control with GitHub, please select `Continuously deploy from a repository (source or function)`
 + Use an inline editor to create a function  
 
-2. The second thing you need to to pay attention to is to specify the source and the how to build the Cloud Function.
+2. Case 1: If you specify `Continuously deploy from a repository (source or function)` radio button,
+
+<img width="109" height="83" alt="image" src="https://github.com/user-attachments/assets/83c0ab8a-0911-4c8d-aafc-11e8c00b9b68" />
+
+then the second thing you need to to pay attention to is to specify the source and the how to build the Cloud Function.
 
 In the following figure, since I want to maintain the Cloud Function with Git on remote GitHub repo, I select `Continuously deploy from a repository (source or function)` and `Cloud Build` radio button.
 
@@ -103,7 +105,7 @@ After that please click `Save` button (blue button with white text)
 
 <img width="612" height="570" alt="image" src="https://github.com/user-attachments/assets/d8b9d94c-d186-47a0-8b33-7dfa0bcd0f12" />
 
-3. The third thing you need to pay attention to is abount the containers settings, networking settings, security settings.
+Additionally you need to pay attention to configure the containers settings, networking settings, security settings.
 
 About container settings, please specify the container port number and remember it.
 
@@ -128,11 +130,46 @@ you need to select service account that this service will use, in the `Service a
 
 <img width="660" height="404" alt="image" src="https://github.com/user-attachments/assets/c28a6188-bc20-48f2-9aa8-af7c67a0b9cd" />
 
-4. The fourth thing you need to pay attention to is to fill a descriptive name as the service name.
+Case 2: If you specify `Use an inline editor to create a function` radio button
+
+<img width="107" height="76" alt="image" src="https://github.com/user-attachments/assets/939c56ff-6e90-43da-9199-60a2cb345366" />
+
+Then the second thing you need to pay attention to is to specify the runtime environment.
+
+<img width="324" height="53" alt="image" src="https://github.com/user-attachments/assets/9e29426d-4368-401c-85e4-f0ab886058bf" />
+
+Also you might want to add a trigger (or you can add it later (after creating the service)) 
+
+The trigger will be triggered only if specified event is met.
+
+In the trigger, you can
+
+  + specify which event will trigger the trigger by specifying the event type <img width="221" height="26" alt="image" src="https://github.com/user-attachments/assets/c49111e9-0485-4ba5-9473-88911979d4bf" />
+
+  + specify the region that the operation about the trigger will be used at <img width="212" height="23" alt="image" src="https://github.com/user-attachments/assets/03023790-4d59-43e6-91f1-f573bc32fca6" />
+
+  + specify the service account, the account will be used for this service <img width="214" height="26" alt="image" src="https://github.com/user-attachments/assets/0a7afdfe-2771-4963-a1ad-28363d680458" />
+
+  + (optional) add labels to organize your project <img width="215" height="83" alt="image" src="https://github.com/user-attachments/assets/4d0ff1b1-887f-4b3c-a76e-e049c8367c95" />
+
+  + and so on.
+    
+> [!WARNING]
+> The region you specified in the trigger takes higher precedence than the region you specified in the configure section <img width="666" height="141" alt="image" src="https://github.com/user-attachments/assets/3fc99b1f-f91e-49c7-ad4d-66c27772faf7" />
+
+After filling in, click `Save trigger` button (blue button with white text) to save it.
+
+<img width="474" height="759" alt="image" src="https://github.com/user-attachments/assets/b69c151f-32dd-491f-a08f-07baa77beacf" />
+
+The you will see a trigger like this
+
+<img width="213" height="154" alt="image" src="https://github.com/user-attachments/assets/fa8909b2-dcff-43eb-8196-ad3b142b2e08" />
+
+3. The third thing you need to pay attention to is to fill a descriptive name as the service name.
 
 <img width="323" height="138" alt="image" src="https://github.com/user-attachments/assets/0ff9d6f5-4261-4d35-848c-919f53d77386" />
 
-5. The fifth thing you need to pay attention to is to set a region.
+4. The fourth thing you need to pay attention to is to set a region.
 
 The service will be used by the compute engine located at the specified region.
 
@@ -149,7 +186,7 @@ The service will be used by the compute engine located at the specified region.
 
 <img width="323" height="138" alt="image" src="https://github.com/user-attachments/assets/0ff9d6f5-4261-4d35-848c-919f53d77386" />
 
-6. The sixth thing you need to pay attention to is to the billing method.
+5. The fifth thing you need to pay attention to is to the billing method.
 
 I highly recommended you to select `Request-based`.
 
@@ -161,8 +198,7 @@ Otherwise, the CPU is always consumed and thus the free quota is always consume 
 
 <img width="262" height="59" alt="image" src="https://github.com/user-attachments/assets/a04edc9d-c12b-4590-af02-19bd4f41c54f" />
 
-
-7. The seventh thing you need to pay attention to is to set the execution environment.
+6. The sixth thing you need to pay attention to is to set the execution environment.
 
 I highly recommend to execute it with the newest generation (now it is, Second generation) for better compatibility and faster performance.
 
@@ -171,14 +207,14 @@ I highly recommend to execute it with the newest generation (now it is, Second g
 
 <img width="309" height="99" alt="image" src="https://github.com/user-attachments/assets/2985c8b2-2dcd-4c5d-86f8-c1ba5f096607" />
 
-8. The seventh thing you need to pay attention to is to set the request timeout and maximam available concurrent requests. 
+7. The seventh thing you need to pay attention to is to set the request timeout and maximam available concurrent requests. 
 
 > [!IMPORTANT]
 > The `Requests timeout` field takes one second as unit.
 
 <img width="644" height="176" alt="image" src="https://github.com/user-attachments/assets/ab3b7139-708a-4284-a94e-6e29e7a430ef" />
 
-9. Lastly you can click `Create` button (at the bottom of the panel) to create the service.
+8. Lastly you can click `Create` button (at the bottom of the panel) to create the service.
 
 <img width="133" height="86" alt="image" src="https://github.com/user-attachments/assets/95d2e2b6-ccae-4629-b02b-b6d7db87bc18" />
 
